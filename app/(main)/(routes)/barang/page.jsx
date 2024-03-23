@@ -34,29 +34,6 @@ const Barang = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  /* const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    await fetch("/api/barang", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: token,
-      },
-      body: JSON.stringify(formData),
-    })
-      .then(() => {
-        getBarang();
-        setFormData({
-          nama_barang: "",
-          kategori: "",
-          stok: 0,
-          harga: "",
-        });
-      })
-      .catch((err) => console.log(err));
-  }; */
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     postBarang(formData, getBarang(setBarang, token), token, setFormData);
@@ -105,7 +82,7 @@ const Barang = () => {
         accessorKey: "_id",
         header: "Action",
         Cell: ({ cell }) => (
-          <span className="d-flex gap-2">
+          <span className="flex flex-row gap-2">
             <div className="">
               <button
                 className="btn btn-danger "
@@ -272,11 +249,11 @@ const Barang = () => {
           <div className="card" style={{}}>
             <div className="card-body">
               <form onSubmit={handleUpdate}>
-                <div className="flex flex-row">
+                <div className="flex flex-row gap-2">
                   <div className="col-sm-4">
                     <input
                       type="text"
-                      className="form-control"
+                      className="input input-bordered"
                       placeholder="Nama Barang"
                       id="nama_barang"
                       name="nama_barang"
@@ -287,7 +264,7 @@ const Barang = () => {
                   </div>
                   <div className="col-sm-2">
                     <select
-                      className="form-select"
+                      className="select"
                       aria-label="Default select example"
                       placeholder="Kategori"
                       id="kategori"
@@ -309,7 +286,7 @@ const Barang = () => {
                   <div className="col-sm-2">
                     <input
                       type="number"
-                      className="form-control"
+                      className="input"
                       id="stok"
                       name="stok"
                       placeholder="Stok"
@@ -320,7 +297,7 @@ const Barang = () => {
                   <div className="col-sm-2">
                     <input
                       type="number"
-                      className="form-control"
+                      className="input"
                       id="harga"
                       name="harga"
                       placeholder="Harga"
